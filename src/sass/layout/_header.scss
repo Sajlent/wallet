@@ -1,3 +1,33 @@
 .header {
+    width: 100%;
+    background: $color-white;
+    padding: 2rem;
+    border-bottom: 1px solid $color-grey;
 
+    &__content {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+
+        @include media('>=sm') {
+            max-width: 540px;
+        }
+
+        @include media('>=md') {
+            max-width: 720px;
+        }
+
+        @include media('>=lg') {
+            max-width: 960px;
+        }
+
+        @include media('>=xl') {
+            max-width: 1140px;
+        }
+    }
+
+    .logo {
+        min-width: 2.5rem;
+        margin-top: -0.5rem;
+    }
 }

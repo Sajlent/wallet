@@ -1,7 +1,16 @@
 // TYPOGRAPHY
-$default-font-family: 'Roboto', sans-serif;
+$default-font-family: 'Overpass', sans-serif;
 $default-font-size: 16px;
+
+// BREAKPOINTS
+$breakpoints: (sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px);
 
 // COLORS
 $color-white: #FFFFFF;
+$color-silver: #eaeaea;
+$color-grey: #c5c5c5;
+$color-turquoise: #264653;
 $color-black: #000000;
+
+// BORDERS
+$default-border-radius: 5px;

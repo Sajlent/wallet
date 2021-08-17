@@ -1,7 +1,16 @@
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
 body {
-    //background: $color-grey;
-    //font-family: $default-font-family;
-    //font-size: $default-font-size;
+    background: $color-silver;
+    font-family: $default-font-family;
+    font-size: $default-font-size;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
 }
