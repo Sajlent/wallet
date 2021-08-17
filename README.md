@@ -1,2 +1,2 @@
-# wallet
-Managment tool for personal budget.
+# Wallet
+Management tool for personal budget.
