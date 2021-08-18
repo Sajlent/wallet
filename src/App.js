@@ -1,25 +1,29 @@
 import React from 'react';
 import Header from './components/Header';
+import Component from './components/Component';
 import MonthSelect from './components/MonthSelect';
+import Categories from './components/Categories';
 
 function App() {
     return (
         <div className="app">
             <Header />
             <main className="main container">
-                <MonthSelect />
-                <div className="component">
+                <Component>
+                    <MonthSelect />
+                </Component>
+                <Component>
                     <h2>Component 1</h2>
-                </div>
-                <div className="component">
-                    <h2>Categories</h2>
-                </div>
-                <div className="component">
+                </Component>
+                <Component>
+                    <Categories />
+                </Component>
+                <Component>
                     <h2>List of expenses</h2>
-                </div>
-                <div className="component component--full-width">
+                </Component>
+                <Component isFullWidth={ true }>
                     <h2>Component 4 - full width</h2>
-                </div>
+                </Component>
             </main>
         </div>
     );

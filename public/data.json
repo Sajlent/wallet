@@ -1,0 +1,83 @@
+{
+  "January": {
+    "expenses": [
+      {
+        "name": "Plane tickets",
+        "category": "",
+        "cost": 330
+      },
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      },
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      }
+    ]
+  },
+  "February": {
+    "expenses": [
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      },
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      },
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      }
+    ]
+  },
+  "March": {
+    "expenses": [
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      },
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      },
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      }
+    ]
+  },
+  "April": {
+    "expenses": [
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      },
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      },
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      }
+    ]
+  },
+  "May": {
+    "expenses": [
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      },
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      },
+      {
+        "name": "Plane tickets",
+        "cost": 330
+      }
+    ]
+  }
+}
