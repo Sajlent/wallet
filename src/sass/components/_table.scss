@@ -1,0 +1,23 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+        padding: 1.25rem 1rem 1rem;
+        border-bottom: 1px solid $color-grey;
+    }
+
+    th {
+        background: $color-silver;
+        text-align: left;
+        border-width: 2px;
+    }
+
+    td {
+
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+}

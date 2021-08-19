@@ -1,6 +1,6 @@
 import React from 'react';
 
-const categoryList = ['travel', 'food', 'pets', 'clothes', 'bills'];
+const categoryList = ['travel', 'food', 'pets', 'clothes', 'bills', 'misc'];
 
 const Categories = () => {
     return(
