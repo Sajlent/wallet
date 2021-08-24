@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from './components/Header';
-import Component from './components/Component';
-import MonthSelect from './components/MonthSelect';
-import Categories from './components/Categories';
-import Expenses from './components/Expenses';
+import Header from 'components/Header';
+import Component from 'components/Component';
+import MonthSelect from 'components/MonthSelect';
+import Categories from 'components/Categories';
+import Expenses from 'components/Expenses';
 
 function App() {
     return (
