@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Expenses.module.scss';
 
 const expensesData = [
     {
@@ -32,7 +33,7 @@ const Expenses = () => {
     return (
         <>
             <h2>List of expenses</h2>
-            <table className="table">
+            <table className={styles.table}>
                 <thead>
                     <tr>
                         <th>Name</th>

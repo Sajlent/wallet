@@ -1,0 +1,11 @@
+@import "../../views/utils/variables";
+
+.box {
+    background: $color-white;
+    padding: 2rem 1rem;
+    border-radius: $default-border-radius;
+}
+
+.box-full-width {
+    grid-column: 1 / -1;
+}
