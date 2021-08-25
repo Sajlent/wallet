@@ -22,7 +22,7 @@ function App() {
                 <Component>
                     <Expenses />
                 </Component>
-                <Component isFullWidth={ true }>
+                <Component isFullWidth={true}>
                     <h2>Component 4 - full width</h2>
                 </Component>
             </main>
