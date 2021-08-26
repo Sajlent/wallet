@@ -24,7 +24,7 @@ function App() {
                 <Box>
                     <Expenses />
                 </Box>
-                <Box isFullWidth={true}>
+                <Box isFullWidth>
                     <h2>Box 4 - full width</h2>
                 </Box>
             </main>

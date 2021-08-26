@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Box.module.scss';
 
 const Box = ({ isFullWidth, children }) => (
@@ -8,3 +9,8 @@ const Box = ({ isFullWidth, children }) => (
 );
 
 export default Box;
+
+Box.propTypes = {
+    isFullWidth: PropTypes.bool,
+    children: PropTypes.element.isRequired
+}
