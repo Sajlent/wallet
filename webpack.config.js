@@ -51,7 +51,7 @@ module.exports = {
                         loader: 'sass-resources-loader',
                         options: {
                             resources: [
-                                './src/views/utils/_variables.scss'
+                                path.resolve(__dirname, 'src/assets/styles/_globals.scss')
                             ]
                         }
                     }
