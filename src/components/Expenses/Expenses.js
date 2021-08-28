@@ -43,7 +43,7 @@ const Expenses = () => {
                 </thead>
                 <tbody>
                     {expensesData.map((expense, index) => (
-                        <tr>
+                        <tr key={index}>
                             <td>{expense.name}</td>
                             <td>{expense.category}</td>
                             <td>${expense.cost}</td>

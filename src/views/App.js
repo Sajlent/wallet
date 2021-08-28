@@ -5,13 +5,13 @@ import Select from 'components/Select/Select';
 import Categories from 'components/Categories/Categories';
 import Expenses from 'components/Expenses/Expenses';
 
-import './App.scss';
+import styles from './App.scss';
 
 function App() {
     return (
         <div className="app">
             <Header />
-            <main className="main container">
+            <main className={styles.container}>
                 <Box>
                     <Select />
                 </Box>

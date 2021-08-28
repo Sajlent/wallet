@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './Input.module.scss';
 
-const Input = ({ type, id, name, value, label }) => {
+const Input = ({ type = 'text', id, name, value, label }) => {
     return (
         <>
             <input
@@ -14,6 +15,14 @@ const Input = ({ type, id, name, value, label }) => {
             <label htmlFor={id}>{label}</label>
         </>
     );
+};
+
+Input.propTypes = {
+    type: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired || PropTypes.number.isRequired,
+    label: PropTypes.string.isRequired
 };
 
 export default Input;

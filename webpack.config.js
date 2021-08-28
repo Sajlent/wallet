@@ -64,6 +64,10 @@ module.exports = {
                     }
                 ]
             },
+            {
+                test: /\.svg$/,
+                use: ['@svgr/webpack']
+            },
             { // config for images
                 test: /\.(png|svg|jpg|jpeg|gif)$/,
                 use: [
@@ -80,8 +84,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({ // plugin for inserting scripts into html
             template: "./src/index.html",
-            filename: "index.html",
-            title: "Learning Webpack"
+            filename: "index.html"
         }),
         new MiniCssExtractPlugin({ // plugin for controlling how compiled css will be outputted and named
             filename: "css/[name].css",
