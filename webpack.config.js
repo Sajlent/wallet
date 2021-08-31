@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -82,6 +83,8 @@ module.exports = {
         ]
     },
     plugins: [
+        new Dotenv(),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({ // plugin for inserting scripts into html
             template: "./src/index.html",
             filename: "index.html"

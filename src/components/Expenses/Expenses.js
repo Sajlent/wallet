@@ -1,35 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './Expenses.module.scss';
 
-const expensesData = [
-    {
-        name: 'Plane tickets',
-        category: 'travel',
-        cost: 330,
-    },
-    {
-        name: 'Cat food',
-        category: 'pets',
-        cost: 89,
-    },
-    {
-        name: 'Dinner in chinese restaurant',
-        category: 'food',
-        cost: 223,
-    },
-    {
-        name: 'Winter jacket',
-        category: 'clothes',
-        cost: 459,
-    },
-    {
-        name: 'Electricity bill',
-        category: 'bill',
-        cost: 230,
-    },
-];
-
 const Expenses = () => {
+    const [expenses, setExpenses] = useState([]);
+
+    useEffect(() => {
+        getExpenses();
+    }, []);
+
+    const getExpenses = () => {
+        fetch('/api/expenses')
+            .then((res) => res.json())
+            .then((data) => setExpenses(data.expenses))
+            .catch((error) => console.log('Error fetching data', error));
+    };
+
     return (
         <>
             <h2>List of expenses</h2>
@@ -42,7 +27,7 @@ const Expenses = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {expensesData.map((expense, index) => (
+                    {expenses.map((expense, index) => (
                         <tr key={index}>
                             <td>{expense.name}</td>
                             <td>{expense.category}</td>

@@ -4,6 +4,11 @@ import App from 'views/App';
 import { store } from 'app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from 'serviceWorker';
+import { makeServer } from './server';
+
+if (process.env.NODE_ENV === 'development') {
+    makeServer({ environment: 'development' });
+}
 
 ReactDOM.render(
     <React.StrictMode>
