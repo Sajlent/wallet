@@ -1,10 +1,9 @@
 import React from 'react';
 import Header from 'components/Header/Header';
 import Box from 'components/Box/Box';
-import Select from 'components/Select/Select';
+import MonthSelector from '../components/MonthSelector/MonthSelector';
 import Categories from 'components/Categories/Categories';
 import Expenses from 'components/Expenses/Expenses';
-
 import styles from './App.scss';
 
 function App() {
@@ -13,7 +12,7 @@ function App() {
             <Header />
             <main className={styles.container}>
                 <Box>
-                    <Select />
+                    <MonthSelector />
                 </Box>
                 <Box>
                     <h2>Box 1</h2>

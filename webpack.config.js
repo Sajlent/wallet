@@ -16,6 +16,8 @@ module.exports = {
         },
         compress: true,
         port: 9000,
+        historyApiFallback: true,
+        hot: true
     },
     output: {
         filename: 'js/[name].bundle.js',
