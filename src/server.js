@@ -15,27 +15,32 @@ export const makeServer = ({ environment = 'test' } = {}) => {
             server.create('month', { id: 'may' })
             server.create('expense', {
                 name: 'Plane tickets',
+                month: 'january',
                 category: 'travel',
                 cost: 330
             });
             server.create('expense', {
                 name: 'Cat food',
                 category: 'pets',
+                month: 'february',
                 cost: 89,
             });
             server.create('expense', {
                 name: 'Dinner in chinese restaurant',
                 category: 'food',
+                month: 'february',
                 cost: 223,
             });
             server.create('expense', {
                 name: 'Winter jacket',
                 category: 'clothes',
+                month: 'february',
                 cost: 459,
             });
             server.create('expense', {
                 name: 'Electricity bill',
                 category: 'bill',
+                month: 'february',
                 cost: 230,
             });
         },
@@ -46,6 +51,10 @@ export const makeServer = ({ environment = 'test' } = {}) => {
             });
             this.get('/months', (schema, request) => {
                 return schema.months.all();
+            });
+            this.get('/expenses/:monthID', (schema, request) => {
+                let month = request.params.monthID;
+                return schema.expenses.where({ month: month });
             });
             this.post('/', (schema, request) => {
                 let attrs = JSON.parse(request.requestBody);

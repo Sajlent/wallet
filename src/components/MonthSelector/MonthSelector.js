@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Select from 'components/Select/Select';
 
 export const MonthSelector = () => {
     const [months, setMonths] = useState([]);
+    const history = useHistory();
+
+    const handleMonthChange = (e) => {
+        history.push(e.currentTarget.value);
+    };
 
     useEffect(() => {
         (async () => {
-            const response = await fetch('/api/monts');
+            const response = await fetch('/api/months');
 
             if (!response.ok) {
                 const message = `An error has occured: ${response.status}`;
@@ -20,7 +26,7 @@ export const MonthSelector = () => {
     }, []);
 
     return (
-        <Select id="month-select" label="Choose a month" options={months} />
+        <Select id="month-select" label="Choose a month" options={months} handleChange={handleMonthChange} />
     );
 };
 
