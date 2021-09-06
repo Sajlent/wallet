@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { setOptions } from 'app/store';
 import InputRadio from 'components/Inputs/InputRadio';
 
 const categoryList = ['travel', 'food', 'pets', 'clothes', 'bills', 'misc'];
 
 const Categories = () => {
-    const [currentCategory, setCurrentCategory] = useState(null);
+    const dispatch = useDispatch();
 
     const handleCategoryChange = (e) => {
-        setCurrentCategory(e.currentTarget.value);
+        const currentCategory = e.currentTarget.value;
+
+        dispatch(setOptions({ optionName: 'category', optionValue: currentCategory }));
     };
 
     return (

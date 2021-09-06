@@ -1,9 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import styles from './Expenses.module.scss';
 
+let monthExpenses = [];
+
 const ExpensesTable = () => {
-    let { monthID } = useParams();
+    const { monthID } = useParams();
+    const options = useSelector((state) => state.expenses.options);
     const [expenses, setExpenses] = useState([]);
 
     useEffect(() => {
@@ -17,9 +21,14 @@ const ExpensesTable = () => {
 
             const data = await response.json();
 
+            monthExpenses = data.expenses;
             setExpenses(data.expenses);
         })();
     }, []);
+
+    useEffect(() => {
+        setExpenses(monthExpenses.filter(item => item.category === options.category));
+    }, [options]);
 
     return(
         <>
