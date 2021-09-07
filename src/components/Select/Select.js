@@ -8,8 +8,8 @@ const Select = ({ id, label, options, handleChange }) => {
             <label htmlFor={id}>{ label }</label>
             <select id={id} className={styles.select} onChange={handleChange}>
                 {options.map((option, index) => (
-                    <option key={index} value={option.id.toLowerCase()}>
-                        {option.id}
+                    <option key={index} value={option.toLowerCase()}>
+                        {option}
                     </option>
                 ))}
             </select>

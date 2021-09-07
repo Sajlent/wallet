@@ -1,59 +1,49 @@
-import { Model, createServer } from 'miragejs';
+import { Model, Factory, createServer } from 'miragejs';
+import faker from 'faker';
+
+const months = ['January', 'February', 'March', 'April', 'May', 'June'];
+const categories = ['travel', 'food', 'pets', 'clothes', 'bills', 'misc'];
 
 export const makeServer = ({ environment = 'test' } = {}) => {
     let server = createServer({
         environment,
         models: {
-            expenses: Model,
-            months: Model
+            expenses: Model
+        },
+        factories: {
+            expense: Factory.extend({
+                name() {
+                    return faker.commerce.productName();
+                },
+                month() {
+                    return months[Math.floor(Math.random() * months.length)].toLowerCase();
+                },
+                category() {
+                    return categories[Math.floor(Math.random() * categories.length)];
+                },
+                cost() {
+                    return faker.commerce.price();
+                }
+            })
         },
         seeds(server) {
-            server.create('month', { id: 'january' })
-            server.create('month', { id: 'february' })
-            server.create('month', { id: 'march' })
-            server.create('month', { id: 'april' })
-            server.create('month', { id: 'may' })
-            server.create('expense', {
-                name: 'Plane tickets',
-                month: 'january',
-                category: 'travel',
-                cost: 330
-            });
-            server.create('expense', {
-                name: 'Cat food',
-                category: 'pets',
-                month: 'february',
-                cost: 89,
-            });
-            server.create('expense', {
-                name: 'Dinner in chinese restaurant',
-                category: 'food',
-                month: 'february',
-                cost: 223,
-            });
-            server.create('expense', {
-                name: 'Winter jacket',
-                category: 'clothes',
-                month: 'february',
-                cost: 459,
-            });
-            server.create('expense', {
-                name: 'Electricity bill',
-                category: 'bill',
-                month: 'february',
-                cost: 230,
-            });
+            server.createList('expense', 50);
         },
         routes() {
             this.namespace = 'api';
-            this.get('/expenses', (schema, request) => {
+            this.get('/expenses', (schema) => {
                 return schema.expenses.all();
             });
-            this.get('/months', (schema, request) => {
-                return schema.months.all();
+            this.get('/months', () => {
+                return months;
+            });
+            this.get('/categories', () => {
+                return categories;
             });
             this.get('/expenses/:monthID', (schema, request) => {
                 let month = request.params.monthID;
+
+                console.log(month);
                 return schema.expenses.where({ month: month });
             });
             this.post('/', (schema, request) => {
@@ -76,5 +66,6 @@ export const makeServer = ({ environment = 'test' } = {}) => {
         }
     });
 
+    console.log(server.db);
     return server;
 }

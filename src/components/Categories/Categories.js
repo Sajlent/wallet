@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setOptions } from 'app/store';
+import { useGetCategoriesQuery, setOptions } from 'app/store';
 import InputRadio from 'components/Inputs/InputRadio';
 
-const categoryList = ['travel', 'food', 'pets', 'clothes', 'bills', 'misc'];
-
 const Categories = () => {
+    const [categories, setCategories] = useState([]);
+    const { data } = useGetCategoriesQuery();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        if (data) setCategories(data);
+    }, [data]);
 
     const handleCategoryChange = (e) => {
         const currentCategory = e.currentTarget.value;
@@ -17,7 +21,7 @@ const Categories = () => {
     return (
         <>
             <h2>Categories</h2>
-            {categoryList.map((category, index) => (
+            {categories.map((category, index) => (
                 <InputRadio
                     key={index}
                     id={category}
