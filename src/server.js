@@ -43,7 +43,6 @@ export const makeServer = ({ environment = 'test' } = {}) => {
             this.get('/expenses/:monthID', (schema, request) => {
                 let month = request.params.monthID;
 
-                console.log(month);
                 return schema.expenses.where({ month: month });
             });
             this.post('/', (schema, request) => {
@@ -66,6 +65,5 @@ export const makeServer = ({ environment = 'test' } = {}) => {
         }
     });
 
-    console.log(server.db);
     return server;
 }

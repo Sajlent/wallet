@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useGetExpensesQuery } from 'app/store';
 import styles from './Expenses.module.scss';
 
@@ -8,6 +7,7 @@ const ExpensesTable = () => {
     const [expenses, setExpenses] = useState([]);
     const { monthID } = useParams();
     const { data, isLoading, isError } = useGetExpensesQuery(monthID);
+    
     const options = useSelector((state) => state.expenses.options);
 
     useEffect(() => {

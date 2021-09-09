@@ -2,6 +2,7 @@ import { createSlice, configureStore } from '@reduxjs/toolkit';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const initialState = {
+    availableMonths: [],
     options: {
         month: null,
         category: null
@@ -35,6 +36,9 @@ const expensesSlice = createSlice({
     name: 'expenses',
     initialState,
     reducers: {
+        setAvailableMonths(state, action) {
+            state.availableMonths = action.payload;
+        },
         setOptions(state, action) {
             const { optionName, optionValue } = action.payload;
 
@@ -43,7 +47,7 @@ const expensesSlice = createSlice({
     }
 });
 
-export const { setOptions } = expensesSlice.actions;
+export const { setAvailableMonths, setOptions } = expensesSlice.actions;
 
 export const store = configureStore({
     reducer: {

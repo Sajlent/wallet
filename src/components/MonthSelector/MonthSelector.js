@@ -1,23 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useGetMonthsQuery } from 'app/store';
+import { useHistory, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useGetMonthsQuery, setAvailableMonths } from 'app/store';
 import Select from 'components/Select/Select';
 
 export const MonthSelector = () => {
-    const [months, setMonths] = useState([]);
     const { data, isLoading, isError } = useGetMonthsQuery();
+    const { monthID } = useParams();
     const history = useHistory();
+    const dispatch = useDispatch();
+    const defaultOption = monthID === undefined ? months[0] : monthID;
 
-    const handleMonthChange = (e) => {
-        history.push(e.currentTarget.value);
+    const handleMonthChange = (value) => {
+        history.push(value);
     };
 
     useEffect(() => {
-        if (data) setMonths(data);
+        if (data) {
+            dispatch(setAvailableMonths(data));
+            // setMonths(data);
+        } 
     }, [data]);
 
     return (
-        <Select id="month-select" label="Choose a month" options={months} handleChange={handleMonthChange} />
+        <> { 
+            isLoading ? <p>Loading...</p> : (
+            <Select id="month-select" 
+                    label="Choose a month" 
+                    options={data} 
+                    defaultValue={ defaultOption } 
+                    handleChange={handleMonthChange} />
+            )}
+        </>
     );
 };
 
