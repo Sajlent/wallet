@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useGetMonthsQuery, setAvailableMonths } from 'app/store';
@@ -18,7 +18,6 @@ export const MonthSelector = () => {
     useEffect(() => {
         if (data) {
             dispatch(setAvailableMonths(data));
-            // setMonths(data);
         } 
     }, [data]);
 
@@ -28,7 +27,7 @@ export const MonthSelector = () => {
             <Select id="month-select" 
                     label="Choose a month" 
                     options={data} 
-                    defaultValue={ defaultOption } 
+                    defaultValue={defaultOption} 
                     handleChange={handleMonthChange} />
             )}
         </>

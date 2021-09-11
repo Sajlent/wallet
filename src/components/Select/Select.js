@@ -12,7 +12,7 @@ const Select = ({ id, defaultValue, label, options, handleChange }) => {
 
     return (
         <>
-            <label htmlFor={id}>{ label }</label>
+            <label htmlFor={id} className={styles.label}>{ label }</label>
             <select id={id} className={styles.select} value={currentValue} onChange={(e) => handleValueChange(e.currentTarget.value)}>
                 {options.map((option, index) => (
                     <option key={index} value={option.toLowerCase()}>

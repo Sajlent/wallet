@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { useGetMonthsQuery, setAvailableMonths } from 'app/store';
 import Box from 'components/Box/Box';
 import MonthSelector from 'components/MonthSelector/MonthSelector';
+import Sorting from 'components/Sorting/Sorting';
 import Categories from 'components/Categories/Categories';
 import Expenses from 'components/Expenses/Expenses';
 import Loader from 'components/Loader/Loader';
@@ -30,7 +31,7 @@ const Dashboard = () => {
                     <MonthSelector />
                 </Box>
                 <Box>
-                    <h2>Box 1</h2>
+                    <Sorting />
                 </Box>
                 <Box>
                     <Categories />

@@ -4,8 +4,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 const initialState = {
     availableMonths: [],
     options: {
-        month: null,
-        category: null
+        category: null,
+        sorting: null
     }
 };
 
