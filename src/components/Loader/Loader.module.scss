@@ -1,0 +1,41 @@
+.loader {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    text-align: center;
+    margin: 100px auto;
+    animation: loader-rotate 1.5s infinite linear;
+
+    &__inner-1, &__inner-2 {
+        width: 60%;
+        height: 60%;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        background-color: $color-turquoise;
+        border-radius: 100%;
+        animation: loader-bounce 1.5s infinite ease-in-out;
+    }
+
+    &__inner-2 {
+        top: auto;
+        bottom: 0;
+        animation-delay: -0.75s;
+    }
+}
+
+@keyframes loader-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-bounce {
+    0%, 100% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+}

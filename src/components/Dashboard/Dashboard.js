@@ -6,6 +6,7 @@ import Box from 'components/Box/Box';
 import MonthSelector from 'components/MonthSelector/MonthSelector';
 import Categories from 'components/Categories/Categories';
 import Expenses from 'components/Expenses/Expenses';
+import Loader from 'components/Loader/Loader';
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const Dashboard = () => {
         } 
     }, [data]);
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <Loader />;
 
     return (
         <Switch>
