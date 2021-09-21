@@ -40,6 +40,11 @@ module.exports = {
                     loader: "babel-loader"
                 }
             },
+            {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                issuer: /\.[jt]sx?$/,
+                use: ['babel-loader', '@svgr/webpack', 'url-loader'],
+            },
             { // config for sass compilation
                 test: /\.scss$/,
                 use: [
@@ -55,7 +60,13 @@ module.exports = {
                         }
                     },
                     {
-                        loader: "sass-loader"
+                        loader: 'resolve-url-loader',
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true
+                        }
                     },
                     {
                         loader: 'sass-resources-loader',
@@ -66,21 +77,6 @@ module.exports = {
                         }
                     }
                 ]
-            },
-            {
-                test: /\.svg$/,
-                use: ['@svgr/webpack']
-            },
-            { // config for images
-                test: /\.(png|svg|jpg|jpeg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: 'images',
-                        }
-                    }
-                ],
             }
         ]
     },
