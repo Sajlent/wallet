@@ -1,22 +1,26 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setOptions } from 'app/store';
+import styles from './Sorting.module.scss';
 
 const Sorting = () => {
     const dispatch = useDispatch();
 
     const changeSorting = (direction) => {
-        dispatch(setOptions(direction));
+        dispatch(setOptions({optionName: 'sorting', optionValue: direction}));
     };
 
     return (
         <>
-            <button onClick={changeSorting('asc')}>
-                Sort asc
-            </button>
-            <button onClick={changeSorting('desc')}>
-                Sort desc
-            </button>
+            <h3>Sorting</h3>
+            <button 
+                className={`${styles['btn-sort']} ${styles['btn-sort--asc']}`} 
+                onClick={() => changeSorting('asc')}
+                aria-label="Sort ascending" />
+            <button 
+                className={`${styles['btn-sort']}`} 
+                onClick={() => changeSorting('desc')}
+                aria-label="Sort descending" />
         </>
     );
 };

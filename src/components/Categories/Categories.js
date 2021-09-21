@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useGetCategoriesQuery, setOptions } from 'app/store';
 import InputRadio from 'components/Inputs/InputRadio';
 
+// TODO: Add options
+
 const Categories = () => {
     const [categories, setCategories] = useState([]);
     const { data } = useGetCategoriesQuery();

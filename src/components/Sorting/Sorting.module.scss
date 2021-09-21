@@ -1,0 +1,12 @@
+.btn-sort {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url('../../assets/images/ico-caret.svg') center center no-repeat;
+    border: none;
+    cursor: pointer;
+
+    &--asc {
+        transform: rotate(180deg);
+    }
+}

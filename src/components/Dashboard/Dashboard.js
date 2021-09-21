@@ -30,7 +30,7 @@ const Dashboard = () => {
                 <Box>
                     <MonthSelector />
                 </Box>
-                <Box>
+                <Box hasRightAlignment>
                     <Sorting />
                 </Box>
                 <Box>

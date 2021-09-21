@@ -16,7 +16,24 @@ const ExpensesTable = () => {
     }, [data]);
 
     useEffect(() => {
-        if (data) setExpenses(data.expenses.filter(item => item.category === options.category));
+        console.log('useEffect', options);
+        if (data) {
+            let filteredExpenses = [...data.expenses];
+
+            if (options.category) {
+                filteredExpenses = filteredExpenses.filter(item => item.category === options.category);
+            }
+
+            if (options.sorting) {
+                if (options.sorting === 'asc') {
+                    filteredExpenses.sort((a, b) => a.cost - b.cost);
+                } else if (options.sorting === 'desc') {
+                    filteredExpenses.sort((a, b) => b.cost - a.cost);
+                }
+            }
+
+            setExpenses(filteredExpenses);
+        } 
     }, [options]);
 
     return(
