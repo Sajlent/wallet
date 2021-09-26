@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useGetCategoriesQuery, setOptions } from 'app/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { useGetCategoriesQuery, setAvailableCategories, setOptions } from 'app/store';
 import InputRadio from 'components/Inputs/InputRadio';
 
-// TODO: Add options
-
 const Categories = () => {
-    const [categories, setCategories] = useState([]);
-    const { data } = useGetCategoriesQuery();
     const dispatch = useDispatch();
+    const { data, isLoading } = useGetCategoriesQuery();
+    const chosenCategory = useSelector(state => state.expenses.options.category);
 
     useEffect(() => {
-        if (data) setCategories(data);
+        if (data) dispatch(setAvailableCategories(data));
     }, [data]);
 
     const handleCategoryChange = (e) => {
@@ -23,16 +21,19 @@ const Categories = () => {
     return (
         <>
             <h2>Categories</h2>
-            {categories.map((category, index) => (
-                <InputRadio
-                    key={index}
-                    id={category}
-                    name="category"
-                    value={category}
-                    label={category}
-                    handleChange={handleCategoryChange}
-                />
-            ))}
+            { isLoading ? <p>Loading...</p> : (
+                data.map((category, index) => (
+                    <InputRadio
+                        key={index}
+                        id={category}
+                        name="category"
+                        value={category}
+                        label={category}
+                        checked={chosenCategory === category}
+                        handleChange={handleCategoryChange}
+                    />
+                ))
+            )}
         </>
     );
 };
