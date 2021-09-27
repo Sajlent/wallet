@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Input.module.scss';
 
-const Input = ({ type = 'text', id, name, value = '', label, handleChange }) => {
+const Input = ({ type = 'text', id, name, value = '', label, error, handleChange }) => {
     return (
         <>
             <label htmlFor={id} className={styles.label}>{label}</label>
@@ -14,6 +14,7 @@ const Input = ({ type = 'text', id, name, value = '', label, handleChange }) => 
                 defaultValue={value}
                 onChange={handleChange}
             />
+            { error && <span className="error">{ error }</span> }
         </>
     );
 };
