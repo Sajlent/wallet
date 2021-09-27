@@ -1,0 +1,12 @@
+.form {
+    display: flex;
+    flex-direction: column;
+
+    @include media('>=md') {
+        width: 50%;
+    }
+
+    .submitButton {
+        margin-left: auto;
+    }
+}

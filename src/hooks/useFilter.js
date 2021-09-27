@@ -7,7 +7,7 @@ export const useFilter = () => {
     const [expenses, setExpenses] = useState([]);
     const { monthID } = useParams();
     const { data, isLoading, isError } = useGetExpensesQuery(monthID);
-    const options = useSelector((state) => state.expenses.options);
+    const options = useSelector(state => state.expenses.options);
 
     useEffect(() => {
         if (data) setExpenses(data.expenses);

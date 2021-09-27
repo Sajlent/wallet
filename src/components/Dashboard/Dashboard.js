@@ -7,6 +7,7 @@ import MonthSelector from 'components/MonthSelector/MonthSelector';
 import Sorting from 'components/Sorting/Sorting';
 import Categories from 'components/Categories/Categories';
 import Expenses from 'components/Expenses/Expenses';
+import FormAddExpense from 'components/FormAddExpense/FormAddExpense';
 import Loader from 'components/Loader/Loader';
 
 const Dashboard = () => {
@@ -14,9 +15,7 @@ const Dashboard = () => {
     const { data, isLoading, isError } = useGetMonthsQuery();
     
     useEffect(() => {
-        if (data) {
-            dispatch(setAvailableMonths(data));
-        } 
+        if (data) dispatch(setAvailableMonths(data));
     }, [data]);
 
     if (isLoading) return <Loader />;
@@ -40,7 +39,7 @@ const Dashboard = () => {
                     <Expenses />
                 </Box>
                 <Box isFullWidth>
-                    <h2>Box 4 - full width</h2>
+                    <FormAddExpense />
                 </Box>
             </Route>
         </Switch>
