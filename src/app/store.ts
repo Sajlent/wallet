@@ -1,37 +1,40 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { IAppState, Months, IExpenses, Categories, IOptionsPayload } from "@/types/general";
 
-const initialState = {
+const initialState: IAppState = {
     availableMonths: [],
     availableCategories: [],
     options: {
         category: null,
-        sorting: null
-    }
+        sorting: null,
+    },
 };
 
 const expensesAPI = createApi({
     baseQuery: fetchBaseQuery({
-        baseUrl: '/api'
+        baseUrl: '/api',
     }),
-    tagTypes: ['Expenses'],
+    tagTypes: ['Expenses', 'Months', 'Categories'],
     endpoints: (builder) => ({
-        getExpenses: builder.query({
+        getExpenses: builder.query<IExpenses, string>({
             query: (monthID) => `expenses/${monthID}`,
-            providesTags: ['Expenses']
+            providesTags: ['Expenses'],
         }),
-        getMonths: builder.query({
+        getMonths: builder.query<Months, void>({
             query: () => 'months',
-            providesTags: ['Months']
+            providesTags: ['Months'],
         }),
-        getCategories: builder.query({
+        getCategories: builder.query<Categories, void>({
             query: () => 'categories',
-            providesTags: ['Categories']
-        })
-    })
+            providesTags: ['Categories'],
+        }),
+    }),
 });
 
-export const { useGetExpensesQuery, useGetMonthsQuery, useGetCategoriesQuery } = expensesAPI;
+export const { useGetExpensesQuery, useGetMonthsQuery, useGetCategoriesQuery } =
+    expensesAPI;
 
 const expensesSlice = createSlice({
     name: 'expenses',
@@ -43,23 +46,31 @@ const expensesSlice = createSlice({
         setAvailableCategories(state, action) {
             state.availableCategories = action.payload;
         },
-        setOptions(state, action) {
+        setOptions(state, action: PayloadAction<IOptionsPayload>) {
             const { optionName, optionValue } = action.payload;
 
             state.options[optionName] = optionValue;
         },
         resetOptions(state) {
             state.options = initialState.options;
-        }
-    }
+        },
+    },
 });
 
-export const { setAvailableMonths, setAvailableCategories, setOptions, resetOptions } = expensesSlice.actions;
+export const {
+    setAvailableMonths,
+    setAvailableCategories,
+    setOptions,
+    resetOptions,
+} = expensesSlice.actions;
 
 export const store = configureStore({
     reducer: {
         [expensesAPI.reducerPath]: expensesAPI.reducer,
-        expenses: expensesSlice.reducer
+        expenses: expensesSlice.reducer,
     },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(expensesAPI.middleware)
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(expensesAPI.middleware),
 });
+
+export type RootState = ReturnType<typeof store.getState>;
